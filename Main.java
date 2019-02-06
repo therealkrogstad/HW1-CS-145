@@ -1,29 +1,28 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        /*int columns = 10;
-        int rows = 10;
-
-        char[][] grid = new char[rows][columns];
-
-
-
-        for (int i = 0; i < grid.length; i++)
-        {
-           grid[i][0] = '*';
-
-            for (int j = 0; j < grid.length; j++)
-            {
-                grid[0][j] = '*';
-                grid[9][j] = '*';
-
-                System.out.print(grid[i][j]);
+        DungeonMap dungeonMap = new DungeonMap();
+        System.out.println("Do you want the basic map dimensions? y/n ");
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.nextLine().equalsIgnoreCase("y")){
+            dungeonMap.setDungeonMap(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+        }else {
+            int x = 0;
+            int y = 0;
+            while(x < 3) {
+                System.out.println("Enter X dimension that is greater than 3");
+                x = scanner.nextInt();
             }
-            System.out.println();
-        }*/
-      //  DungeonGame game = new DungeonGame();
-       // game.play();
-      //  Monster test = new Monster();
-      //  test.setMonsterType("Goblin");
+            while(y < 3) {
+                System.out.println("Enter Y dimension that is greater than 3");
+                y = scanner.nextInt();
+            }
+            dungeonMap.setDungeonMap(x, y);
+        }
+        
+        DungeonGame dungeonGame = new DungeonGame();
+        dungeonGame.play();
     }
 }
