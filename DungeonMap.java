@@ -60,5 +60,8 @@ public class DungeonMap {
             }
             System.out.println();
         }
+        System.out.println("HP: " + player.getHealth);
+        System.out.println("Gold: " + player.getGold);
+       
     }
 }
