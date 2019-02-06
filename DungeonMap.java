@@ -5,6 +5,7 @@ public class DungeonMap {
     private int playerYLocation = 1;
     private String dungeonMap[][];
     private Player player;
+    public Room room;
     private String player_icon;
 
     private final String MAP_NS_WALL = "-";
@@ -47,10 +48,20 @@ public class DungeonMap {
         }
     }
     public void playerLocation(int x, int y){
-        dungeonMap[playerYLocation][playerXLocation] = MAP_EXPLORED;
-        playerYLocation += y;
-        playerXLocation += x;
-        dungeonMap[playerYLocation][playerXLocation] = player_icon;
+        if (dungeonMap[playerYLocation + y][playerXLocation + x].equalsIgnoreCase("*")){
+            dungeonMap[playerYLocation][playerXLocation] = MAP_EXPLORED;
+            playerYLocation += y;
+            playerXLocation += x;
+            dungeonMap[playerYLocation][playerXLocation] = player_icon;
+            room.setEncounter(false);
+        } else {
+            dungeonMap[playerYLocation][playerXLocation] = MAP_EXPLORED;
+            playerYLocation += y;
+            playerXLocation += x;
+            dungeonMap[playerYLocation][playerXLocation] = player_icon;
+            room.setEncounter(true);
+        }
+
     }
 
     public void print(){
@@ -60,7 +71,5 @@ public class DungeonMap {
             }
             System.out.println();
         }
-        System.out.println("GP = " + player.getGold);
-        System.out.println("HP = " + player.getHealth);
     }
 }
