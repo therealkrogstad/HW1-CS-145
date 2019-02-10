@@ -7,7 +7,6 @@ public class Room {
     private String mapIcon;
 
 
-
     public void enter(Player player) {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
@@ -27,11 +26,11 @@ public class Room {
 
                 while (monster.getHealth() > 0) {
                     System.out.println("Select an action: [1] Attack, [2] Run ");
-                    int combatAction = scanner.nextInt();
+                    String combatAction = scanner.nextLine();
 
 
                     //attack
-                    if (combatAction == 1) {
+                    if (combatAction.equals("1")) {
                         //monster attack
                         monster.attack(player);
                         System.out.println("The " + monster.getMonsterType() + "hits you for " + monster.getDamage() + " damage!");
@@ -46,7 +45,7 @@ public class Room {
                     }
 
                     //run
-                    else if (combatAction == 2) {
+                    else if (combatAction.equals("2")) {
                         monster.attack(player);
                         System.out.println("You try to run... ");
                         System.out.println("The " + monster.getMonsterType() + "attacks and hits you for " + monster.getDamage() + " damage as you try to escape");
