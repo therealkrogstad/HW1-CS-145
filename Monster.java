@@ -1,44 +1,57 @@
 import java.util.Random;
 
+
 public class Monster {
-    //initialize monster
     private int health;
     private int damage;
     private String monsterType;
 
-    //Initializes monster
-    public void initializeMonster(){
+
+    public int getDamage(){return damage;}
+    public void setDamage(int damage){this.damage = damage;}
+
+    public int getHealth(){return health;}
+    public void setHealth(int health){this.health = health;}
+
+
+
+    public void attack(){
+
+    }
+
+    public void onHit(){
+
+    }
+
+    public String getMonsterType(){return monsterType;}
+    public void setMonsterType(String monsterType){
+
+        this.monsterType = monsterType;
+
+        String[] monsterClass = {"Goblin", "Zombie", "Orc", "Deneke"};
+
         Random random = new Random();
-        int monster = random.nextInt(4);
-        if (monster == 0){
-            monsterType = "Goblin";
-            health = 6;
-            damage = 10;
-        }else if (monster == 1){
-            monsterType = "Zombie";
-            health = 12;
-            damage = 15;
-        }else if (monster == 2){
-            monsterType = "Orc";
-            health = 18;
-            damage = 20;
-        }else if (monster == 3){
-            monsterType = "Deneke";
-            health = 55;
-            damage = 5;
+
+        int monsterClassIndex = random.nextInt(monsterClass.length);
+        this.monsterType = monsterClass[monsterClassIndex];
+
+
+        if(this.monsterType.equals("Goblin")){
+            this.health = 6;
+            this.damage = 10;
+        }
+        else if(this.monsterType.equals("Zombie")){
+            this.health = 12;
+            this.damage = 15;
+        }
+        else if(this.monsterType.equals("Orc")){
+            this.health = 18;
+            this.damage = 20;
+        }
+        else if(this.monsterType.equals("Deneke")){
+            this.health = 55;
+            this.damage = 5;
         }
     }
-    // deals damage to player
-    public void attack(Player target){
-        target.onHit(damage);
-    }
-    // takes damage from player
-    public void onHit(int damage){
-        health -= damage;
-    }
-    //retruns monster's health
-    public int getHealth(){
-        return health;
-    }
-}
 
+}
