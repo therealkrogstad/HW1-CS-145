@@ -13,9 +13,14 @@ public class DungeonMap {
     private final String MAP_FLOOR = " ";
     private final String MAP_EXPLORED = "*";
 
-    public DungeonMap(Player player, Room[][] room){
+    public DungeonMap(Player player, int yLength, int xLength){
         this.player = player;
-        this.room = room;
+        this.room = new Room[yLength][xLength];
+        for (int i = 0; i < room.length; i++){
+            for (int j = 0; j < room[i].length; j++){
+                room[i][j] = new Room();
+            }
+        }
     }
     public void setDungeonMap(int xPos, int yPos){
 //        room = new Room[yPos][xPos];
@@ -28,7 +33,7 @@ public class DungeonMap {
                     room[i][j].setMapIcon(MAP_CORNER_WALL);
                 } else if(j == 0 || j == xPos-1) {
                     room[i][j].setMapIcon(MAP_WE_WALL);
-                } else if(i == 0 || i == xPos-1) {
+                } else if(i == 0 || i == yPos-1) {
                     room[i][j].setMapIcon(MAP_NS_WALL);
                 }else{
                     room[i][j].setMapIcon(MAP_FLOOR);
@@ -39,7 +44,7 @@ public class DungeonMap {
     }
 
     public boolean playerLocationValid(int x, int y){
-        if (playerYLocation + y != 0 || playerYLocation + y != room.length-1 || playerXLocation + x != 0 || playerXLocation + x != room[0].length){
+        if (playerYLocation + y != 0 && playerYLocation + y != room.length-1 && playerXLocation + x != 0 && playerXLocation + x != room[0].length){
             return true;
         }else {
             System.out.println("Not a valid direction.");
@@ -58,7 +63,7 @@ public class DungeonMap {
     public void print(){
         for (int i = 0; i < room.length; i++){
             for (int j = 0; j < room[i].length; j++){
-                System.out.print(room[i][j] + " ");
+                System.out.print(room[i][j].getMapIcon() + " ");
             }
             System.out.println();
         }
