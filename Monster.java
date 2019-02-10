@@ -15,18 +15,18 @@ public class Monster {
 
 
 
-    public void attack(){
-
+    public void attack(Player target){
+        target.onHit(damage);
     }
 
-    public void onHit(){
-
+    public void onHit(int damage){
+        health -= damage;
     }
 
-    public String getMonsterType(){return monsterType;}
-    public void setMonsterType(String monsterType){
-
-        this.monsterType = monsterType;
+    public String getMonsterType(){
+        return monsterType;
+    }
+    public void initializeMonster(){
 
         String[] monsterClass = {"Goblin", "Zombie", "Orc", "Deneke"};
 
