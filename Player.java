@@ -107,10 +107,10 @@ public class Player {
     }
 
     public void onLoot(int gold){
-        if(getPlayerClass().equals("1"){
+        if(getPlayerClass().equals("1")){
             this.gold += gold;
         }
-        else if(getPlayerClass().equals("2"){
+        else if(getPlayerClass().equals("2")){
             this.gold += (gold * THIEF_LOOT_MODIFIER);
         }
     }
