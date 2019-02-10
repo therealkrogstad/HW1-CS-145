@@ -2,15 +2,21 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Room {
-    private boolean encounter = true;
+    private boolean visited = false;
+
+    private String mapIcon;
+
+
 
     public void enter(Player player) {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         int encounter = random.nextInt(2);
-        // checks to see if room has already had an encounter
-        if(this.encounter) {
+
+        if (!visited) {
+
+
             // if encounter is monster
             if (encounter == 0) {
 
@@ -53,6 +59,7 @@ public class Room {
 
 
                 }
+                visited = true;
 
             }
 
@@ -74,14 +81,17 @@ public class Room {
 
                 }
             }
+
         }
     }
 
-    public boolean isEncounter() {
-        return encounter;
+
+
+    public String getMapIcon() {
+        return mapIcon;
     }
 
-    public void setEncounter(boolean encounter) {
-        this.encounter = encounter;
+    public void setMapIcon(String mapIcon) {
+        this.mapIcon = mapIcon;
     }
 }
